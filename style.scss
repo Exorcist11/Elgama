@@ -1,0 +1,177 @@
+* {
+    margin : 0;
+    padding: 0;
+}
+
+.container {
+    width          : 100%;
+    height         : 100vh;
+    background     : linear-gradient(125deg, rgb(255, 217, 0), rgb(0, 255, 217), rgb(94, 0, 128));
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+
+    .box {
+        width           : 400px;
+        height          : auto;
+        background-color: #fff;
+        opacity         : 0.8;
+        border-radius   : 16px;
+
+        .create-key {
+            margin        : 10px 10px;
+            display       : flex;
+            flex-direction: column;
+
+            fieldset {
+                border-radius: 10px;
+            }
+
+            .text {
+                text-align: center;
+                margin-top: 3px;
+            }
+
+            .content {
+                display    : flex;
+                align-items: center;
+                margin-top : 5px;
+
+                .text-item {
+                    align-items    : center;
+                    justify-content: center;
+                    width          : 40%;
+                    margin-left    : 20px;
+                }
+
+                .input-var {
+                    input {
+                        outline: none;
+                        padding: 1px;
+                    }
+                }
+            }
+
+            .button {
+                display        : flex;
+                align-items    : center;
+                justify-content: center;
+                margin         : 7px 0px;
+
+                .btn-options {
+                    margin-left: 10px;
+
+                    input {
+                        width : 140px;
+                        height: 25px;
+                    }
+                }
+            }
+        }
+
+        .confirm-key {
+            margin        : 10px 10px;
+            display       : flex;
+            flex-direction: column;
+
+            fieldset {
+                border-radius: 10px;
+            }
+
+            .content {
+                display    : flex;
+                align-items: center;
+                margin-top : 5px;
+
+                .text-content {
+                    align-items    : center;
+                    justify-content: center;
+                    width          : 40%;
+                    margin-left    : 20px;
+                }
+
+                .input-var {
+                    input {
+                        outline: none;
+                        padding: 1px;
+                    }
+                }
+
+            }
+
+            .text {
+                text-align    : center;
+                margin-top    : 3px;
+                display       : flex;
+                flex-direction: column;
+
+                .text-head {
+                    margin-top: 5px;
+                }
+
+                .input-file {
+                    text-align : left;
+                    margin-left: 20px;
+                    margin-top : 5px;
+                }
+            }
+
+            .input-content {
+                text-align    : center;
+                margin-top    : 3px;
+                display       : flex;
+                flex-direction: column;
+
+                .input-message {
+                    input {
+                        width  : 80%;
+                        outline: none;
+                        height : 50px;
+                    }
+                }
+
+                .input-btn {
+                    margin-top: 5px;
+
+                    button {
+                        height       : 25px;
+                        width        : 90px;
+                        margin-left  : 5px;
+                        margin-bottom: 5px;
+                    }
+
+                }
+            }
+        }
+
+        .check {
+            margin        : 10px 10px;
+            display       : flex;
+            flex-direction: column;
+
+            fieldset {
+                border-radius: 10px;
+            }
+
+            .title {
+                text-align: center;
+            }
+
+            .check-file {
+                text-align : left;
+                margin-left: 20px;
+                margin-top : 5px;
+            }
+
+            .check-val {
+                text-align: center;
+                margin    : 5px 0px;
+
+                button {
+                    width : 80px;
+                    height: 25px;
+                }
+            }
+        }
+    }
+}
