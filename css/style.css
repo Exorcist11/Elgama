@@ -117,6 +117,7 @@
 }
 .container .box .check {
   margin: 10px 10px;
+  padding-bottom: 8px;
   display: flex;
   flex-direction: column;
 }

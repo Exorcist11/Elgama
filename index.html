@@ -11,128 +11,130 @@
 
 <body>
     <div class="container">
-        <div class="box">
-            <!-- Tạo khoá -->
-            <div class="create-key">
-                <fieldset>
-                    <legend>Tạo khoá</legend>
-                    <!-- public key -->
-                    <div class="text">
-                        Khoá công khai (P,a,d)
-                    </div>
-                    <div class="content">
-                        <div class="text-item">
-                            <label for="">
-                                Số nguyên tố P:
-                            </label>
+        <form action="" id="form">
+            <div class="box">
+                <!-- Tạo khoá -->
+                <div class="create-key">
+                    <fieldset>
+                        <legend>Tạo khoá</legend>
+                        <!-- public key -->
+                        <div class="text">
+                            Khoá công khai (P,a,d)
                         </div>
-                        <div class="input-var">
-                            <input type="text" id="soNguyenTo">
+                        <div class="content">
+                            <div class="text-item">
+                                <label for="">
+                                    Số nguyên tố P:
+                                </label>
+                            </div>
+                            <div class="input-var">
+                                <input type="text" id="soNguyenTo">
+                            </div>
                         </div>
-                    </div>
-                    <div class="content">
-                        <div class="text-item">
-                            <label for="">
-                                Số Alpha:
-                            </label>
+                        <div class="content">
+                            <div class="text-item">
+                                <label for="">
+                                    Số Alpha:
+                                </label>
+                            </div>
+                            <div class="input-var">
+                                <input type="text" name="" id="soAlpha">
+                            </div>
                         </div>
-                        <div class="input-var">
-                            <input type="text" name="" id="soAlpha">
+                        <div class="content">
+                            <div class="text-item">
+                                <label for="">
+                                    (d = a^x mod P) Số d:
+                                </label>
+                            </div>
+                            <div class="input-var">
+                                <input type="text" name="" id="soD" disabled>
+                            </div>
                         </div>
-                    </div>
-                    <div class="content">
-                        <div class="text-item">
-                            <label for="">
-                                (d = a^x mod P) Số d:
-                            </label>
+                        <!-- primary key -->
+                        <div class="text">
+                            Khoá bí mật (x)
                         </div>
-                        <div class="input-var">
-                            <input type="text" name="" id="">
+                        <div class="content">
+                            <div class="text-item">
+                                <label for="">
+                                    Số nguyên x:
+                                </label>
+                            </div>
+                            <div class="input-var">
+                                <input type="text" name="" id="soX">
+                            </div>
                         </div>
-                    </div>
-                    <!-- primary key -->
-                    <div class="text">
-                        Khoá bí mật (x)
-                    </div>
-                    <div class="content">
-                        <div class="text-item">
-                            <label for="">
-                                Số nguyên x:
-                            </label>
-                        </div>
-                        <div class="input-var">
-                            <input type="text" name="" id="">
-                        </div>
-                    </div>
 
-                    <div class="button">
-                        <div class="btn-options">
-                            <input type="button" value="Tạo khoá ngẫu nhiên">
+                        <div class="button">
+                            <div class="btn-options">
+                                <input type="button" value="Tạo khoá ngẫu nhiên">
+                            </div>
+                            <div class="btn-options">
+                                <input type="button" value="Tạo khoá tuỳ chọn">
+                            </div>
                         </div>
-                        <div class="btn-options">
-                            <input type="button" value="Tạo khoá tuỳ chọn">
+                    </fieldset>
+                </div>
+                <!-- Thực hiện ký -->
+                <div class="confirm-key">
+                    <fieldset>
+                        <legend>Thực hiện ký</legend>
+                        <div class="content">
+                            <div class="text-content">
+                                Nhập số ngẫu nhiên K:
+                            </div>
+                            <div class="input-var">
+                                <input type="text" name="" id="soK">
+                            </div>
                         </div>
-                    </div>
-                </fieldset>
-            </div>
-            <!-- Thực hiện ký -->
-            <div class="confirm-key">
-                <fieldset>
-                    <legend>Thực hiện ký</legend>
-                    <div class="content">
-                        <div class="text-content">
-                            Nhập số ngẫu nhiên K:
+                        <div class="content">
+                            <div class="text-content">
+                                (Y = a^K mod P) Số Y:
+                            </div>
+                            <div class="input-var">
+                                <input type="text" name="" id="soY" disabled>
+                            </div>
                         </div>
-                        <div class="input-var">
-                            <input type="text" name="" id="">
+                        <div class="text">
+                            <div class="text-head">
+                                Chọn file cần ký
+                            </div>
+                            <div class="input-file">
+                                <input type="file" name="" id="">
+                            </div>
                         </div>
-                    </div>
-                    <div class="content">
-                        <div class="text-content">
-                            (Y = a^K mod P) Số Y:
+                        <div class="input-content">
+                            <div class="text-title">
+                                Nội dung file
+                            </div>
+                            <div class="input-message">
+                                <input type="text" name="" id="resultDisplay">
+                            </div>
+                            <div class="input-btn">
+                                <button type="button">Ký văn bản</button>
+                                <button type="button" onclick="reset()">Reset</button>
+                            </div>
                         </div>
-                        <div class="input-var">
-                            <input type="text" name="" id="">
+                    </fieldset>
+                </div>
+                <!-- Check -->
+                <div class="check">
+                    <fieldset>
+                        <legend>Kiểm tra</legend>
+                        <div class="title">
+                            Chọn file thực hiện kiểm tra
                         </div>
-                    </div>
-                    <div class="text">
-                        <div class="text-head">
-                            Chọn file cần ký
-                        </div>
-                        <div class="input-file">
+                        <div class="check-file">
                             <input type="file" name="" id="">
                         </div>
-                    </div>
-                    <div class="input-content">
-                        <div class="text-title">
-                            Nội dung file
+                        <div class="check-val">
+                            <button type="button" onclick="Test()">Kiểm tra</button>
                         </div>
-                        <div class="input-message">
-                            <input type="text" name="" id="resultDisplay">
-                        </div>
-                        <div class="input-btn">
-                            <button type="button">Ký văn bản</button>
-                            <button type="button">Reset</button>
-                        </div>
-                    </div>
-                </fieldset>
+                    </fieldset>
+                </div>
             </div>
-            <!-- Check -->
-            <div class="check">
-                <fieldset>
-                    <legend>Kiểm tra</legend>
-                    <div class="title">
-                        Chọn file thực hiện kiểm tra
-                    </div>
-                    <div class="check-file">
-                        <input type="file" name="" id="">
-                    </div>
-                    <div class="check-val">
-                        <button type="button" onclick="Test()">Kiểm tra</button>
-                    </div>
-                </fieldset>
-            </div>
-        </div>
+        </form>
     </div>
     <script src="script.js"></script>
 </body>
