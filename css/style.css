@@ -101,8 +101,10 @@
   display: flex;
   flex-direction: column;
 }
-.container .box .confirm-key .input-content .input-message input {
-  width: 80%;
+.container .box .confirm-key .input-content .input-message textarea {
+  resize: none;
+  padding: 5px;
+  width: 86%;
   outline: none;
   height: 50px;
 }

@@ -34,7 +34,7 @@
                         <div class="content">
                             <div class="text-item">
                                 <label for="">
-                                    Số Alpha:
+                                    Số α:
                                 </label>
                             </div>
                             <div class="input-var">
@@ -44,11 +44,11 @@
                         <div class="content">
                             <div class="text-item">
                                 <label for="">
-                                    (d = a^x mod P) Số d:
+                                    (β = α^x mod P) Số β:
                                 </label>
                             </div>
                             <div class="input-var">
-                                <input type="text" name="" id="soD" disabled>
+                                <input type="text" name="" id="soBeta" disabled>
                             </div>
                         </div>
                         <!-- primary key -->
@@ -68,10 +68,10 @@
 
                         <div class="button">
                             <div class="btn-options">
-                                <input type="button" value="Tạo khoá ngẫu nhiên">
+                                <input type="button" value="Tạo khoá ngẫu nhiên" onclick="khoaNgauNhien()">
                             </div>
                             <div class="btn-options">
-                                <input type="button" value="Tạo khoá tuỳ chọn">
+                                <input type="button" value="Tạo khoá tuỳ chọn" onclick="khoaTuyChon()">
                             </div>
                         </div>
                     </fieldset>
@@ -90,7 +90,7 @@
                         </div>
                         <div class="content">
                             <div class="text-content">
-                                (Y = a^K mod P) Số Y:
+                                (Y = α^K mod P) Số Y:
                             </div>
                             <div class="input-var">
                                 <input type="text" name="" id="soY" disabled>
@@ -101,7 +101,7 @@
                                 Chọn file cần ký
                             </div>
                             <div class="input-file">
-                                <input type="file" name="" id="">
+                                <input type="file" name="" id="inputFile" onchange="onMyfileChange(this)">
                             </div>
                         </div>
                         <div class="input-content">
@@ -109,10 +109,10 @@
                                 Nội dung file
                             </div>
                             <div class="input-message">
-                                <input type="text" name="" id="resultDisplay">
+                                <textarea id="hashFile"></textarea>
                             </div>
                             <div class="input-btn">
-                                <button type="button">Ký văn bản</button>
+                                <button type="button" onclick="kyVanBan()">Ký văn bản</button>
                                 <button type="button" onclick="reset()">Reset</button>
                             </div>
                         </div>

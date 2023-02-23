@@ -123,8 +123,10 @@
                 flex-direction: column;
 
                 .input-message {
-                    input {
-                        width  : 80%;
+                    textarea {
+                        resize: none;
+                        padding: 5px;
+                        width  : 86%;
                         outline: none;
                         height : 50px;
                     }
