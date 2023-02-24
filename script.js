@@ -2,19 +2,40 @@ let reset = () => {
     document.getElementById("form").reset();
 }
 
+let sqrt = (value) => {
+    if (value < 0n) {
+        throw 'square root of negative numbers is not supported'
+    }
+
+    if (value < 2n) {
+        return value;
+    }
+
+    let newtonIteration = (n, x0) => {
+        const x1 = ((n / x0) + x0) >> 1n;
+        if (x0 === x1 || x0 === (x1 - 1n)) {
+            return x0;
+        }
+        return newtonIteration(n, x1);
+    }
+
+    return newtonIteration(value, 1n);
+}
+
 let isPrime = (n) => {
-    if (n < 2) return false;
-    for (let i = 2; i <= Math.sqrt(n); i++) {
-        if (n % i === 0) return false;
+    if (n < 2n) return false;
+    for (let i = 2n; i <= sqrt(BigInt(n)); i++) {
+        if (n % i === 0n) return false;
     }
     return true;
 }
 
 let check = () => {
-    let P = parseInt(document.getElementById('soNguyenTo').value);
-    let A = parseInt(document.getElementById('soAlpha').value);
-    let x = parseInt(document.getElementById('soX').value);
-    let k = parseInt(document.getElementById('soK').value);
+    let P = BigInt(document.getElementById('soNguyenTo').value);
+    let alpha = BigInt(document.getElementById('soAlpha').value);
+    let a = BigInt(document.getElementById('soA').value);
+    let k = BigInt(document.getElementById('soK').value);
+    let display = document.getElementById('hashFile').value;
     // Kiểm tra P
     if (!P) {
         alert("ERR: Chưa nhập số P!");
@@ -25,20 +46,20 @@ let check = () => {
             return false;
         }
     }
-    if (!A) {
+    if (!alpha) {
         alert("ERR: Chưa nhập số alpha!");
         return false;
     } else {
-        if (A < 1 || A > P - 1) {
+        if (alpha < 1n || alpha > P - 1n) {
             alert("ERR: alpha phải thuộc Zp*!");
             return false;
         }
     }
-    if (!x) {
+    if (!a) {
         alert("ERR: Chưa nhập số x!");
         return false;
     } else {
-        if (x < 2 || x > P - 2) {
+        if (a < 2n || a > P - 2n) {
             alert("ERR: x phải thuộc {2,3,..,p-2}!");
             return false;
         }
@@ -47,80 +68,104 @@ let check = () => {
         alert("ERR: Chưa nhập số k!");
         return false;
     } else {
-        if (k < 1 || k > P - 1) {
+        if (k < 1n || k > P - 1n) {
             alert('ERR: k phải thuộc Zp-1!');
             return false;
         }
     }
+    if(!display){
+        alert("ERR: Chưa chọn file!");
+        return false;
+    }
     return true;
 }
 //Ramdom number
-let randomIntFromInterval = (min, max) => { // min and max included 
-    return Math.floor(Math.random() * (max - min + 1) + min)
+let generateRandomBigInt = (lowBigInt, highBigInt) => {
+    if (lowBigInt >= highBigInt) {
+        throw new Error('lowBigInt must be smaller than highBigInt');
+    }
+
+    const difference = highBigInt - lowBigInt;
+    const differenceLength = difference.toString().length;
+    let multiplier = '';
+    while (multiplier.length < differenceLength) {
+        multiplier += Math.random()
+            .toString()
+            .split('.')[1];
+    }
+    multiplier = multiplier.slice(0, differenceLength);
+    const divisor = '1' + '0'.repeat(differenceLength);
+
+    const randomDifference = (difference * BigInt(multiplier)) / BigInt(divisor);
+
+    return lowBigInt + randomDifference;
 }
 // beta = alp^x mod p
-let binhPhuongVaNhan = (bas, exp, mod) => {
-    let t = 1;
-    while (exp > 0) {
-        if (exp % 2 != 0)
+let squareMulti = (bas, exp, mod) => {
+    let t = 1n;
+    while (exp > 0n) {
+        if (exp % 2n != 0n)
             t = (t * bas) % mod;
 
         bas = (bas * bas) % mod;
-        exp >>= 1;
+        exp >>= 1n;
     }
     return t % mod;
 }
 // gdc
 let gcd = (a, b) => {
-    return (b == 0) ? a : gcd(b, a % b);
+    return (b == 0n) ? a : gcd(b, a % b);
 }
 let modInverse = (a, m) => {
-    for (let i = 1; i < m; i++)
-        if (((a % m) * (i % m)) % m == 1)
+    for (let i = 1n; i < m; i++)
+        if (((a % m) * (i % m)) % m == 1n)
             return i;
 }
 
 let khoaNgauNhien = () => {
     let P = document.getElementById('soNguyenTo')
-    let A = document.getElementById('soAlpha');
-    let x = document.getElementById('soX');
+    let alpha = document.getElementById('soAlpha');
+    let a = document.getElementById('soA');
     let display = document.getElementById('soBeta');
     let k = document.getElementById('soK');
-    let randomP = randomA = randomX = 0;
+    let randomP = randomAlpha = randomA = 0n;
     do {
-        randomP = randomIntFromInterval(100, 100000000);
-        randomX = randomIntFromInterval(2, randomP - 2);
-        randomA = randomIntFromInterval(1, randomP);
+        randomP = generateRandomBigInt(100n, 100000000n);
+        randomA = generateRandomBigInt(2n, randomP - 2n);
+        randomAlpha = generateRandomBigInt(1n, randomP);
     } while (!isPrime(randomP));
-    let randomK = randomIntFromInterval(100, randomP);
-    while (gcd(randomK, randomP - 1) != 1) {
-        randomK = randomIntFromInterval(100, randomP);
+
+    let randomK = generateRandomBigInt(100n, randomP);
+    while (gcd(randomK, randomP - 1n) != 1n) {
+        randomK = generateRandomBigInt(100n, randomP);
     }
+
     P.value = randomP;
-    A.value = randomA;
-    x.value = randomX;
+    alpha.value = randomAlpha;
+    a.value = randomA;
     k.value = randomK;
-    let beta = binhPhuongVaNhan(randomA, randomX, randomP);
+    let beta = squareMulti(randomAlpha, randomA, randomP);
     display.value = beta;
-    console.log('Kpub: ', P.value, A.value, beta);
-    console.log('Kpr: ', x.value);
+    console.log('Kpub: ', P.value, alpha.value, display.value);
+    console.log('Kpr: ', a.value);
+    console.log(randomP, randomAlpha, randomK, randomA);
 }
 
 let khoaTuyChon = () => {
-    let P = parseInt(document.getElementById('soNguyenTo').value);
-    let A = parseInt(document.getElementById('soAlpha').value);
-    let x = parseInt(document.getElementById('soX').value);
+    let P = BigInt(document.getElementById('soNguyenTo').value);
+    let alpha = BigInt(document.getElementById('soAlpha').value);
+    let a = BigInt(document.getElementById('soA').value);
     let display = document.getElementById('soBeta');
 
-    let beta = binhPhuongVaNhan(A, x, P);
+    let beta = squareMulti(alpha, a, P);
     display.value = beta;
     try {
         console.log(Number(modulo));
     } catch (error) {
         console.log(error)
     }
-    console.log('Kpub: ', P, A, beta);
-    console.log('Kpr: ', x);
+    console.log('Kpub: ', P, alpha, beta);
+    console.log('Kpr: ', a);
 }
 
 let onMyfileChange = (fileInput) => {
@@ -144,42 +189,35 @@ let onMyfileChange = (fileInput) => {
     reader.readAsArrayBuffer(fileInput.files[0]);
 }
 
-const hexToDecimal = hex => parseInt(hex, 16);
-
-let delta = (msg, alp, gamal, k, p) => {
-    let en_msg = [];
-    let k_inv = modInverse(k, p - 1);
-    for (let i = 0; i < msg.length; i++) {
-        en_msg.push(msg[i]);
-    }
-    for (let i = 0; i < en_msg.length; i++) {
-        en_msg[i] = ((en_msg[i] - alp * gamal) * k_inv, p - 1)
-    }
-    return en_msg;
+//Convert string to bigint
+let hexToBigInt = (hex) => {
+    return BigInt(parseInt(hex, 16));
 }
 
 let kyVanBan = () => {
-    //check();
+    check();
 
-    let P = BigInt(parseInt(document.getElementById('soNguyenTo').value));
-    let A = BigInt(parseInt(document.getElementById('soAlpha').value));
-    let k = BigInt(parseInt(document.getElementById('soK').value));
+    let P = BigInt(document.getElementById('soNguyenTo').value);
+    let alpha = BigInt(document.getElementById('soAlpha').value);
+    let k = BigInt(document.getElementById('soK').value);
+    let a = BigInt(document.getElementById('soA').value);
     let msg = document.getElementById('hashFile').value;
     let soY = document.getElementById('soY');
-    let gamal = binhPhuongVaNhan(A, k, P);
+    let gamal = squareMulti(a, k, P);
     soY.value = gamal;
-    let convertMsg = hexToDecimal(msg);
-    console.log('MSG: ', convertMsg);
+    let convertMsg = hexToBigInt(msg);
+    console.log('Covert: ', convertMsg);
     let delta;
+    delta = ((convertMsg - gamal * a) * modInverse(k, P - 1n)) % (P - 1n);
     console.log("Gamal: ", gamal);
-    console.log("Delata: ", delta);
+    console.log("Delta: ", delta);
     // Thực hiện ký văn bản
 
 }
 
 
-let Test = () => {
-    let file = document.getElementById('inputFile');
+let KiemTra = () => {
+
     let display = document.getElementById('hashFile');
 
     let P = BigInt(parseInt(document.getElementById('soNguyenTo').value));
