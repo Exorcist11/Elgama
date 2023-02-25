@@ -74,11 +74,11 @@
 .container .box .signature .confirm-key .content {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-top: 5px;
 }
 .container .box .signature .confirm-key .content .text-content {
-  margin-left: 10px;
-  width: 25%;
+  width: 30%;
 }
 .container .box .signature .confirm-key .content .input-var input {
   outline: none;
@@ -139,27 +139,77 @@
 }
 .container .box .signature .check {
   margin: 10px 10px;
-  padding-bottom: 8px;
   display: flex;
   width: 50%;
   flex-direction: column;
 }
 .container .box .signature .check fieldset {
   border-radius: 10px;
+  width: 100%;
 }
-.container .box .signature .check .title {
-  text-align: center;
-}
-.container .box .signature .check .check-file {
-  text-align: left;
-  margin-left: 20px;
+.container .box .signature .check .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 5px;
 }
-.container .box .signature .check .check-val {
-  text-align: center;
-  margin: 5px 0px;
+.container .box .signature .check .content .text-content {
+  width: 30%;
 }
-.container .box .signature .check .check-val button {
-  width: 80px;
+.container .box .signature .check .content .input-var input {
+  outline: none;
+  padding: 3px;
+}
+.container .box .signature .check .text {
+  text-align: center;
+  margin-top: 3px;
+  display: flex;
+  flex-direction: column;
+}
+.container .box .signature .check .text .text-head {
+  margin-top: 5px;
+}
+.container .box .signature .check .text .file-preview {
+  width: 100%;
+}
+.container .box .signature .check .text .file-preview textarea {
+  resize: none;
+  padding: 5px;
+  width: 90%;
+}
+.container .box .signature .check .text .input-file {
+  text-align: left;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container .box .signature .check .text .input-file #selected-file {
+  width: 60%;
+}
+.container .box .signature .check .text .input-file #showPreview-after {
+  height: 22px;
+  padding: 1px 6px;
+}
+.container .box .signature .check .input-content {
+  text-align: center;
+  margin-top: 3px;
+  display: flex;
+  flex-direction: column;
+}
+.container .box .signature .check .input-content .input-message textarea {
+  resize: none;
+  padding: 5px;
+  width: 86%;
+  outline: none;
+  height: 50px;
+}
+.container .box .signature .check .input-content .input-btn {
+  margin-top: 5px;
+}
+.container .box .signature .check .input-content .input-btn button {
   height: 25px;
+  width: 90px;
+  margin-left: 5px;
+  margin-bottom: 5px;
 }/*# sourceMappingURL=style.css.map */

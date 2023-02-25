@@ -188,26 +188,6 @@ let onMyfileChange = (fileInput) => {
     }
     reader.readAsArrayBuffer(fileInput.files[0]);
 }
-let onMyfileChange2 = (fileInput) => {
-    let display = document.getElementById('abc');
-    if (fileInput.files[0] == undefined) {
-        return;
-    }
-
-    var reader = new FileReader();
-    reader.onload = (ev) => {
-        crypto.subtle.digest('SHA-256', ev.target.result).then(hashBuffer => {
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-            display.value = hashHex;
-            console.log('Hash: ', hashHex);
-        });
-    };
-    reader.onerror = function (err) {
-        console.error("Failed to read file", err);
-    }
-    reader.readAsArrayBuffer(fileInput.files[0]);
-}
 
 let readFileA = () => {
     let selected = document.getElementById("inputFile").files[0];
@@ -232,38 +212,71 @@ let kyVanBan = () => {
 
     let P = BigInt(document.getElementById('soNguyenTo').value);
     let alpha = BigInt(document.getElementById('soAlpha').value);
+    let delta;
     let k = BigInt(document.getElementById('soK').value);
     let a = BigInt(document.getElementById('soA').value);
     let msg = document.getElementById('hashFile').value;
     let soY = document.getElementById('soY');
-    let gamal = squareMulti(a, k, P);
-    soY.value = gamal;
+    let gamal = squareMulti(alpha, k, P);
     let convertMsg = hexToBigInt(msg);
+    let displayGamal = document.getElementById('displayGamal');
+    let displayDelta = document.getElementById('displayDelta');
+    soY.value = gamal;
+    delta = ((convertMsg - a *gamal) * modInverse(k, P - 1n)) % (P - 1n);
     console.log('Covert: ', convertMsg);
-    let delta;
-    delta = ((convertMsg - gamal * a) * modInverse(k, P - 1n)) % (P - 1n);
     console.log("Gamal: ", gamal);
     console.log("Delta: ", delta);
-    // Thực hiện ký văn bản
-    let textFileAsBlob = new Blob([delta], { type: 'text/plain' });
-    let downloadLink = document.createElement("a");
-    downloadLink.download = 'Sig';
-    downloadLink.innerHTML = "Download File";
-    if (window.webkitURL != null) {
-        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-    } else {
-        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-        downloadLink, onclick = destroyClickedElement;
-        downloadLink.style.display = "none";
-        document.body.appendChild(downloadLink);
-    }
-    downloadLink.click();
+    displayGamal.value = gamal;
+    displayDelta.value = delta;
+    alert("Ký văn bản thành công!");
 }
 
+let onMyfileChange_value = (fileInput) => {
+    let display = document.getElementById('hashFile-txt');
+    if (fileInput.files[0] == undefined) {
+        return;
+    }
 
-let KiemTra = () => {
+    var reader = new FileReader();
+    reader.onload = (ev) => {
+        crypto.subtle.digest('SHA-256', ev.target.result).then(hashBuffer => {
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            display.value = hashHex;
+            console.log('Hash: ', hashHex);
+        });
+    };
+    reader.onerror = function (err) {
+        console.error("Failed to read file", err);
+    }
+    reader.readAsArrayBuffer(fileInput.files[0]);
+}
 
-    let display = document.getElementById('hashFile');
-    console.log('Hash file: ', display.value);
+let readFileB = () => {
+    let selected = document.getElementById("selected-file").files[0];
+    let reader = new FileReader();
+    reader.addEventListener("loadend", () => {
+        document.getElementById("after-file-preview").value = reader.result;
+    });
+    reader.readAsText(selected);
+}
 
+let kiemTraVanBan = () => {
+    let P = BigInt(document.getElementById('soNguyenTo').value);
+    let alpha = BigInt(document.getElementById('soAlpha').value);
+    let beta = BigInt(document.getElementById('soBeta').value);
+    let k = BigInt(document.getElementById('soK').value);
+    let a = BigInt(document.getElementById('soA').value);
+    let displayGamal = BigInt(document.getElementById('displayGamal').value);
+    let displayDelta = BigInt(document.getElementById('displayDelta').value);
+    let msg = document.getElementById('hashFile-txt').value;
+    let x = hexToBigInt(msg);
+    let check1 = ((squareMulti(beta, displayGamal, P) * squareMulti(displayGamal, displayDelta, P)) % P);
+    let check2 = squareMulti(alpha, x, P);
+    console.log(check1, check2);
+    if (check1 == check2) {
+        alert("Văn bản không bị thay đổi!");
+    } else {
+        alert("Văn bản đã bị thay đổi!");
+    }
 }

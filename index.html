@@ -44,7 +44,7 @@
                         <div class="content">
                             <div class="text-item">
                                 <label for="">
-                                    (β = α^x mod P) Số β:
+                                    (β = α^a mod P) Số β:
                                 </label>
                             </div>
                             <div class="input-var">
@@ -110,8 +110,8 @@
                                 <div class="input-file">
                                     <input type="file" name="" id="inputFile" title="input file"
                                         onchange="onMyfileChange(this)" />
-                                    <input type="button" name="" value="Show preview" id="showPreview" title="show preview"
-                                    onclick="readFileA()" />
+                                    <input type="button" name="" value="Show preview" id="showPreview"
+                                        title="show preview" onclick="readFileA()" />
                                 </div>
                             </div>
                             <div class="input-content">
@@ -132,15 +132,47 @@
                     <div class="check">
                         <fieldset>
                             <legend>Kiểm tra</legend>
-                            <div class="title">
-                                Chọn file thực hiện kiểm tra
+                            <div class="content">
+                                <div class="text-content">
+                                    Gamal:
+                                </div>
+                                <div class="input-var">
+                                    <input type="text" name="" title="Gamal" id="displayGamal" disabled>
+                                </div>
                             </div>
-                            <div class="check-file">
-                                <input type="file" title="Check file" name="" id="check-file"
-                                    onchange="onMyfileChange2(this)">
+                            <div class="content">
+                                <div class="text-content">
+                                    Delta:
+                                </div>
+                                <div class="input-var">
+                                    <input type="text" name="" title="Delta" id="displayDelta" disabled>
+                                </div>
                             </div>
-                            <div class="check-val">
-                                <button type="button" onclick="KiemTra()">Kiểm tra</button>
+                            <div class="text">
+                                <div class="text-head">
+                                    Chọn file thực hiện kiểm tra
+                                </div>
+                                <div class="file-preview">
+                                    <textarea name="after-file-preview" id="after-file-preview" title="after-file-preview" cols="30"
+                                        rows="10"></textarea>
+                                </div>
+                                <div class="input-file">
+                                    <input type="file" name="" id="selected-file" title="input file"
+                                        onchange="onMyfileChange_value(this)" />
+                                    <input type="button" name="" value="Show preview" id="showPreview-after"
+                                        title="show preview" onclick="readFileB()" />
+                                </div>
+                            </div>
+                            <div class="input-content">
+                                <div class="text-title">
+                                    Nội dung file
+                                </div>
+                                <div class="input-message">
+                                    <textarea title="display hashfile" id="hashFile-txt"></textarea>
+                                </div>
+                                <div class="input-btn">
+                                    <button type="button" onclick="kiemTraVanBan()">Kiểm tra</button>
+                                </div>
                             </div>
                         </fieldset>
                     </div>

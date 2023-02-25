@@ -84,13 +84,13 @@
                 }
 
                 .content {
-                    display    : flex;
-                    align-items: center;
-                    margin-top : 5px;
+                    display        : flex;
+                    align-items    : center;
+                    justify-content: center;
+                    margin-top     : 5px;
 
                     .text-content {
-                        margin-left: 10px;
-                        width      : 25%;
+                        width: 30%;
                     }
 
                     .input-var {
@@ -174,32 +174,101 @@
 
             .check {
                 margin        : 10px 10px;
-                padding-bottom: 8px;
                 display       : flex;
                 width         : 50%;
                 flex-direction: column;
 
                 fieldset {
                     border-radius: 10px;
+                    width        : 100%;
                 }
 
-                .title {
-                    text-align: center;
+                .content {
+                    display        : flex;
+                    align-items    : center;
+                    justify-content: center;
+                    margin-top     : 5px;
+
+                    .text-content {
+                        width: 30%;
+                    }
+
+                    .input-var {
+                        input {
+                            outline: none;
+                            padding: 3px;
+                        }
+                    }
+
                 }
 
-                .check-file {
-                    text-align : left;
-                    margin-left: 20px;
-                    margin-top : 5px;
+                .text {
+                    text-align    : center;
+                    margin-top    : 3px;
+                    display       : flex;
+                    flex-direction: column;
+
+                    .text-head {
+                        margin-top: 5px;
+                    }
+
+                    .file-preview {
+                        width: 100%;
+
+                        textarea {
+                            resize : none;
+                            padding: 5px;
+                            width  : 90%;
+                        }
+                    }
+
+                    .input-file {
+                        text-align   : left;
+                        //margin-left: 20px;
+                        margin-top   : 5px;
+
+                        display        : flex;
+                        align-items    : center;
+                        justify-content: center;
+
+                        #selected-file {
+                            width: 60%;
+                        }
+
+                        #showPreview-after {
+                            height : 22px;
+                            padding: 1px 6px;
+                        }
+                    }
                 }
 
-                .check-val {
-                    text-align: center;
-                    margin    : 5px 0px;
+                .input-content {
+                    text-align    : center;
+                    margin-top    : 3px;
+                    display       : flex;
+                    flex-direction: column;
 
-                    button {
-                        width : 80px;
-                        height: 25px;
+                    .input-message {
+                        textarea {
+                            //display: none;
+                            resize : none;
+                            padding: 5px;
+                            width  : 86%;
+                            outline: none;
+                            height : 50px;
+                        }
+                    }
+
+                    .input-btn {
+                        margin-top: 5px;
+
+                        button {
+                            height       : 25px;
+                            width        : 90px;
+                            margin-left  : 5px;
+                            margin-bottom: 5px;
+                        }
+
                     }
                 }
             }
