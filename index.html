@@ -76,63 +76,76 @@
                         </div>
                     </fieldset>
                 </div>
-                <!-- Thực hiện ký -->
-                <div class="confirm-key">
-                    <fieldset>
-                        <legend>Thực hiện ký</legend>
-                        <div class="content">
-                            <div class="text-content">
-                                Nhập số ngẫu nhiên K:
+                <!-- Xử lý -->
+                <div class="signature">
+                    <!-- Thực hiện ký -->
+                    <div class="confirm-key">
+                        <fieldset>
+                            <legend>Thực hiện ký</legend>
+                            <div class="content">
+                                <div class="text-content">
+                                    Số K:
+                                </div>
+                                <div class="input-var">
+                                    <input type="text" name="" placeholder="Số ngẫu nhiên" title="K" id="soK">
+                                </div>
                             </div>
-                            <div class="input-var">
-                                <input type="text" name="" title="K" id="soK">
+                            <div class="content">
+                                <div class="text-content">
+                                    Số Y:
+                                </div>
+                                <div class="input-var">
+                                    <input type="text" name="" placeholder="(Y = α^K mod P)" title="Y" id="soY"
+                                        disabled>
+                                </div>
                             </div>
-                        </div>
-                        <div class="content">
-                            <div class="text-content">
-                                (Y = α^K mod P) Số Y:
+                            <div class="text">
+                                <div class="text-head">
+                                    Chọn file cần ký
+                                </div>
+                                <div class="file-preview">
+                                    <textarea name="file-preview" id="file-preview" title="file-preview" cols="30"
+                                        rows="10"></textarea>
+                                </div>
+                                <div class="input-file">
+                                    <input type="file" name="" id="inputFile" title="input file"
+                                        onchange="onMyfileChange(this)" />
+                                    <input type="button" name="" value="Show preview" id="showPreview" title="show preview"
+                                    onclick="readFileA()" />
+                                </div>
                             </div>
-                            <div class="input-var">
-                                <input type="text" name="" title="Y" id="soY" disabled>
+                            <div class="input-content">
+                                <div class="text-title">
+                                    Nội dung file
+                                </div>
+                                <div class="input-message">
+                                    <textarea title="display hashfile" id="hashFile"></textarea>
+                                </div>
+                                <div class="input-btn">
+                                    <button type="button" onclick="kyVanBan()">Ký văn bản</button>
+                                    <button type="button" onclick="reset()">Reset</button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="text">
-                            <div class="text-head">
-                                Chọn file cần ký
+                        </fieldset>
+                    </div>
+                    <!-- Check -->
+                    <div class="check">
+                        <fieldset>
+                            <legend>Kiểm tra</legend>
+                            <div class="title">
+                                Chọn file thực hiện kiểm tra
                             </div>
-                            <div class="input-file">
-                                <input type="file" name="" id="inputFile" title="input file" onchange="onMyfileChange(this)">
+                            <div class="check-file">
+                                <input type="file" title="Check file" name="" id="check-file"
+                                    onchange="onMyfileChange2(this)">
                             </div>
-                        </div>
-                        <div class="input-content">
-                            <div class="text-title">
-                                Nội dung file
+                            <div class="check-val">
+                                <button type="button" onclick="KiemTra()">Kiểm tra</button>
                             </div>
-                            <div class="input-message">
-                                <textarea title="display hashfile" id="hashFile"></textarea>
-                            </div>
-                            <div class="input-btn">
-                                <button type="button" onclick="kyVanBan()">Ký văn bản</button>
-                                <button type="button" onclick="reset()">Reset</button>
-                            </div>
-                        </div>
-                    </fieldset>
+                        </fieldset>
+                    </div>
                 </div>
-                <!-- Check -->
-                <div class="check">
-                    <fieldset>
-                        <legend>Kiểm tra</legend>
-                        <div class="title">
-                            Chọn file thực hiện kiểm tra
-                        </div>
-                        <div class="check-file">
-                            <input type="file" title="Check file" name="" id="check-file" onchange="onMyfileChange2(this)">
-                        </div>
-                        <div class="check-val">
-                            <button type="button" onclick="KiemTra()" >Kiểm tra</button>
-                        </div>
-                    </fieldset>
-                </div>
+
             </div>
         </form>
     </div>

@@ -208,6 +208,16 @@ let onMyfileChange2 = (fileInput) => {
     }
     reader.readAsArrayBuffer(fileInput.files[0]);
 }
+
+let readFileA = () => {
+    let selected = document.getElementById("inputFile").files[0];
+    let reader = new FileReader();
+    reader.addEventListener("loadend", () => {
+        document.getElementById("file-preview").value = reader.result;
+    });
+    reader.readAsText(selected);
+}
+
 //Convert string to bigint
 let hexToBigInt = (hex) => {
     return BigInt(parseInt(hex, 16));
@@ -239,11 +249,11 @@ let kyVanBan = () => {
     let downloadLink = document.createElement("a");
     downloadLink.download = 'Sig';
     downloadLink.innerHTML = "Download File";
-    if(window.webkitURL != null){
+    if (window.webkitURL != null) {
         downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
     } else {
         downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-        downloadLink,onclick = destroyClickedElement;
+        downloadLink, onclick = destroyClickedElement;
         downloadLink.style.display = "none";
         document.body.appendChild(downloadLink);
     }

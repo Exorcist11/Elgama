@@ -12,18 +12,19 @@
   justify-content: center;
 }
 .container .box {
-  width: 400px;
+  width: fit-content;
   height: auto;
   background-color: #fff;
   opacity: 0.8;
   border-radius: 16px;
-}
-.container .box .create-key {
-  margin: 10px 10px;
   display: flex;
   flex-direction: column;
 }
+.container .box .create-key {
+  margin: 10px 15px;
+}
 .container .box .create-key fieldset {
+  width: 100%;
   border-radius: 10px;
 }
 .container .box .create-key .text {
@@ -32,12 +33,11 @@
 }
 .container .box .create-key .content {
   display: flex;
-  align-items: center;
   margin-top: 5px;
-}
-.container .box .create-key .content .text-item {
   align-items: center;
   justify-content: center;
+}
+.container .box .create-key .content .text-item {
   width: 40%;
   margin-left: 20px;
 }
@@ -58,87 +58,108 @@
   width: 140px;
   height: 25px;
 }
-.container .box .confirm-key {
+.container .box .signature {
+  display: flex;
+}
+.container .box .signature .confirm-key {
   margin: 10px 10px;
   display: flex;
+  width: 50%;
   flex-direction: column;
 }
-.container .box .confirm-key fieldset {
+.container .box .signature .confirm-key fieldset {
   border-radius: 10px;
+  width: 100%;
 }
-.container .box .confirm-key .content {
+.container .box .signature .confirm-key .content {
   display: flex;
   align-items: center;
   margin-top: 5px;
 }
-.container .box .confirm-key .content .text-content {
+.container .box .signature .confirm-key .content .text-content {
+  margin-left: 10px;
+  width: 25%;
+}
+.container .box .signature .confirm-key .content .input-var input {
+  outline: none;
+  padding: 3px;
+}
+.container .box .signature .confirm-key .text {
+  text-align: center;
+  margin-top: 3px;
+  display: flex;
+  flex-direction: column;
+}
+.container .box .signature .confirm-key .text .text-head {
+  margin-top: 5px;
+}
+.container .box .signature .confirm-key .text .file-preview {
+  width: 100%;
+}
+.container .box .signature .confirm-key .text .file-preview textarea {
+  resize: none;
+  padding: 5px;
+  width: 90%;
+}
+.container .box .signature .confirm-key .text .input-file {
+  text-align: left;
+  margin-top: 5px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 40%;
-  margin-left: 20px;
 }
-.container .box .confirm-key .content .input-var input {
-  outline: none;
-  padding: 1px;
+.container .box .signature .confirm-key .text .input-file #inputFile {
+  width: 60%;
 }
-.container .box .confirm-key .text {
+.container .box .signature .confirm-key .text .input-file #showPreview {
+  height: 22px;
+  padding: 1px 6px;
+}
+.container .box .signature .confirm-key .input-content {
   text-align: center;
   margin-top: 3px;
   display: flex;
   flex-direction: column;
 }
-.container .box .confirm-key .text .text-head {
-  margin-top: 5px;
-}
-.container .box .confirm-key .text .input-file {
-  text-align: left;
-  margin-left: 20px;
-  margin-top: 5px;
-}
-.container .box .confirm-key .input-content {
-  text-align: center;
-  margin-top: 3px;
-  display: flex;
-  flex-direction: column;
-}
-.container .box .confirm-key .input-content .input-message textarea {
+.container .box .signature .confirm-key .input-content .input-message textarea {
   resize: none;
   padding: 5px;
   width: 86%;
   outline: none;
   height: 50px;
 }
-.container .box .confirm-key .input-content .input-btn {
+.container .box .signature .confirm-key .input-content .input-btn {
   margin-top: 5px;
 }
-.container .box .confirm-key .input-content .input-btn button {
+.container .box .signature .confirm-key .input-content .input-btn button {
   height: 25px;
   width: 90px;
   margin-left: 5px;
   margin-bottom: 5px;
 }
-.container .box .check {
+.container .box .signature .check {
   margin: 10px 10px;
   padding-bottom: 8px;
   display: flex;
+  width: 50%;
   flex-direction: column;
 }
-.container .box .check fieldset {
+.container .box .signature .check fieldset {
   border-radius: 10px;
 }
-.container .box .check .title {
+.container .box .signature .check .title {
   text-align: center;
 }
-.container .box .check .check-file {
+.container .box .signature .check .check-file {
   text-align: left;
   margin-left: 20px;
   margin-top: 5px;
 }
-.container .box .check .check-val {
+.container .box .signature .check .check-val {
   text-align: center;
   margin: 5px 0px;
 }
-.container .box .check .check-val button {
+.container .box .signature .check .check-val button {
   width: 80px;
   height: 25px;
 }/*# sourceMappingURL=style.css.map */
