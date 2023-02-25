@@ -28,7 +28,7 @@
                                 </label>
                             </div>
                             <div class="input-var">
-                                <input type="text" id="soNguyenTo">
+                                <input type="text" id="soNguyenTo" title="isPrime">
                             </div>
                         </div>
                         <div class="content">
@@ -38,7 +38,7 @@
                                 </label>
                             </div>
                             <div class="input-var">
-                                <input type="text" name="" id="soAlpha">
+                                <input type="text" name="" id="soAlpha" title="Alpha">
                             </div>
                         </div>
                         <div class="content">
@@ -48,7 +48,7 @@
                                 </label>
                             </div>
                             <div class="input-var">
-                                <input type="text" name="" id="soBeta" disabled>
+                                <input type="text" name="" id="soBeta" title="Beta" disabled>
                             </div>
                         </div>
                         <!-- primary key -->
@@ -58,11 +58,11 @@
                         <div class="content">
                             <div class="text-item">
                                 <label for="">
-                                    Số nguyên x:
+                                    Số nguyên a:
                                 </label>
                             </div>
                             <div class="input-var">
-                                <input type="text" name="" id="soA">
+                                <input type="text" name="" id="soA" title="A">
                             </div>
                         </div>
 
@@ -85,7 +85,7 @@
                                 Nhập số ngẫu nhiên K:
                             </div>
                             <div class="input-var">
-                                <input type="text" name="" id="soK">
+                                <input type="text" name="" title="K" id="soK">
                             </div>
                         </div>
                         <div class="content">
@@ -93,7 +93,7 @@
                                 (Y = α^K mod P) Số Y:
                             </div>
                             <div class="input-var">
-                                <input type="text" name="" id="soY" disabled>
+                                <input type="text" name="" title="Y" id="soY" disabled>
                             </div>
                         </div>
                         <div class="text">
@@ -101,7 +101,7 @@
                                 Chọn file cần ký
                             </div>
                             <div class="input-file">
-                                <input type="file" name="" id="inputFile" onchange="onMyfileChange(this)">
+                                <input type="file" name="" id="inputFile" title="input file" onchange="onMyfileChange(this)">
                             </div>
                         </div>
                         <div class="input-content">
@@ -109,7 +109,7 @@
                                 Nội dung file
                             </div>
                             <div class="input-message">
-                                <textarea id="hashFile"></textarea>
+                                <textarea title="display hashfile" id="hashFile"></textarea>
                             </div>
                             <div class="input-btn">
                                 <button type="button" onclick="kyVanBan()">Ký văn bản</button>
@@ -126,10 +126,10 @@
                             Chọn file thực hiện kiểm tra
                         </div>
                         <div class="check-file">
-                            <input type="file" name="" id="">
+                            <input type="file" title="Check file" name="" id="check-file" onchange="onMyfileChange2(this)">
                         </div>
                         <div class="check-val">
-                            <button type="button" onclick="KiemTra()">Kiểm tra</button>
+                            <button type="button" onclick="KiemTra()" >Kiểm tra</button>
                         </div>
                     </fieldset>
                 </div>

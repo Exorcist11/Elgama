@@ -73,7 +73,7 @@ let check = () => {
             return false;
         }
     }
-    if(!display){
+    if (!display) {
         alert("ERR: Chưa chọn file!");
         return false;
     }
@@ -188,10 +188,33 @@ let onMyfileChange = (fileInput) => {
     }
     reader.readAsArrayBuffer(fileInput.files[0]);
 }
+let onMyfileChange2 = (fileInput) => {
+    let display = document.getElementById('abc');
+    if (fileInput.files[0] == undefined) {
+        return;
+    }
 
+    var reader = new FileReader();
+    reader.onload = (ev) => {
+        crypto.subtle.digest('SHA-256', ev.target.result).then(hashBuffer => {
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            display.value = hashHex;
+            console.log('Hash: ', hashHex);
+        });
+    };
+    reader.onerror = function (err) {
+        console.error("Failed to read file", err);
+    }
+    reader.readAsArrayBuffer(fileInput.files[0]);
+}
 //Convert string to bigint
 let hexToBigInt = (hex) => {
     return BigInt(parseInt(hex, 16));
+}
+
+let destroyClickedElement = (event) => {
+    document.body.removeChild(event.target);
 }
 
 let kyVanBan = () => {
@@ -212,16 +235,25 @@ let kyVanBan = () => {
     console.log("Gamal: ", gamal);
     console.log("Delta: ", delta);
     // Thực hiện ký văn bản
-
+    let textFileAsBlob = new Blob([delta], { type: 'text/plain' });
+    let downloadLink = document.createElement("a");
+    downloadLink.download = 'Sig';
+    downloadLink.innerHTML = "Download File";
+    if(window.webkitURL != null){
+        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+    } else {
+        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+        downloadLink,onclick = destroyClickedElement;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+    }
+    downloadLink.click();
 }
 
 
 let KiemTra = () => {
 
     let display = document.getElementById('hashFile');
-
-    let P = BigInt(parseInt(document.getElementById('soNguyenTo').value));
-    console.log(P);
     console.log('Hash file: ', display.value);
 
 }
